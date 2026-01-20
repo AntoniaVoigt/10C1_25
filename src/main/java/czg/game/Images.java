@@ -15,12 +15,15 @@ public class Images {
 
     private static final Map<String, Image> loaded = new HashMap<>();
 
-    // Bild, welches verwendet wird für den Fall, dass das eigentliche
-    // Bild nicht geladen werden kann. Ein 2x2-Schachbrett-Muster in
-    // Schwarz und Magenta (wie in z.B. Minecraft).
+    /**
+     * Bild, welches verwendet wird für den Fall, dass das eigentliche
+     * Bild nicht geladen werden kann. Ein 2x2-Schachbrett-Muster in
+     * Schwarz und Magenta (wie in z.B. Minecraft).
+     */
     static final Image missingTexture;
 
     static {
+        // missingTexture generieren
         missingTexture = new BufferedImage(PIXEL_SCALE, PIXEL_SCALE, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = (Graphics2D) missingTexture.getGraphics();
 

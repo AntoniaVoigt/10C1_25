@@ -9,18 +9,48 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Zentraler zugriff auf gedrückte Tasten der Tastatur und Maus
+ */
 public class Input implements KeyListener, MouseListener {
 
+    /**
+     * Singleton der Klasse
+     */
     public static final Input INSTANCE = new Input();
 
+    private Input() {}
 
-    public enum KeyState { NOT_PRESSED, PRESSED, HELD }
 
+    /**
+     * Zustände einer Taste
+     */
+    public enum KeyState {
+        /**
+         * Taste nicht gedrückt
+         */
+        NOT_PRESSED,
+        /**
+         * Taste seit diesem Frame gedrückt
+         */
+        PRESSED,
+        /**
+         * Taste seit mehr als einem Frame gedrückt
+         */
+        HELD
+    }
+
+    /**
+     * Zustände der Tastatur-Tasten
+     */
     private final Map<Integer, KeyState> keyStates = new ConcurrentHashMap<>();
+    /**
+     * Zustände der Maus-Tasten
+     */
     private final Map<Integer, KeyState> mouseStates = new ConcurrentHashMap<>();
 
     /**
-     *
+     * Abfrage des Zustandes einer Tastatur-Taste
      * @param keyCode Siehe {@link KeyEvent}-Klasse. Z.B. {@link KeyEvent#VK_SPACE} für Leertaste.
      * @return Zustand der Taste. Siehe {@link KeyState}.
      */
@@ -28,6 +58,11 @@ public class Input implements KeyListener, MouseListener {
         return keyStates.getOrDefault(keyCode, KeyState.NOT_PRESSED);
     }
 
+    /**
+     * Abfrage des Zustandes einer Maus-Taste
+     * @param button Siehe {@link MouseEvent}-Klasse. Z.B. {@link MouseEvent#BUTTON1} für die linke Maustaste.
+     * @return Zustand der Taste. Siehe {@link KeyState}.
+     */
     public KeyState getMouseState(int button) {
         return mouseStates.getOrDefault(button, KeyState.NOT_PRESSED);
     }
@@ -55,23 +90,8 @@ public class Input implements KeyListener, MouseListener {
 
 
     @Override
-    public void keyTyped(KeyEvent keyEvent) {
-
-    }
-
-    @Override
     public void keyPressed(KeyEvent keyEvent) {
         keyStates.put(keyEvent.getKeyCode(), KeyState.PRESSED);
-    }
-
-    @Override
-    public void keyReleased(KeyEvent keyEvent) {
-        keyStates.remove(keyEvent.getKeyCode());
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent mouseEvent) {
-
     }
 
     @Override
@@ -82,6 +102,24 @@ public class Input implements KeyListener, MouseListener {
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         mouseStates.remove(mouseEvent.getButton());
+    }
+
+    @Override
+    public void keyReleased(KeyEvent keyEvent) {
+        keyStates.remove(keyEvent.getKeyCode());
+    }
+
+
+    // Nicht verwendet
+
+    @Override
+    public void keyTyped(KeyEvent keyEvent) {
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent mouseEvent) {
+
     }
 
     @Override
