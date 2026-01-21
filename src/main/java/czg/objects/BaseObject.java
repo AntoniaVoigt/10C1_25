@@ -1,7 +1,6 @@
 package czg.objects;
 
 import czg.MainWindow;
-import czg.util.Images;
 import czg.util.Input;
 import czg.util.Input.KeyState;
 
@@ -18,44 +17,41 @@ import static czg.MainWindow.*;
 public abstract class BaseObject {
 
     public int x, y;
-    public final int width, height;
-    public final Image sprite;
-
-    private final String spritePath;
+    public int width, height;
+    public Image sprite;
 
     /**
      * Ein neues Objekt erstellen und in die Mitte des Bildschirms platzieren.
-     * Die Größe des Objekts entspricht der Größe der Bilddatei.
-     * @param spritePath Pfad zu einer Bilddatei
+     * Die Größe des Objekts entspricht der Größe des Bildes.
+     * @param sprite Bild
      */
-    protected BaseObject(String spritePath) {
-        this(spritePath, WIDTH / 2, HEIGHT / 2);
+    protected BaseObject(Image sprite) {
+        this(sprite, WIDTH / 2, HEIGHT / 2);
     }
 
     /**
      * Ein neues Objekt erstellen und an die angegebene Stelle platzieren.
-     * Die Größe des Objekts entspricht der Größe der Bilddatei.
-     * @param spritePath Pfad zu einer Bilddatei
+     * Die Größe des Objekts entspricht der Größe des Bildes.
+     * @param sprite Bild
      * @param x X-Position
      * @param y Y-Position
      */
-    protected BaseObject(String spritePath, int x, int y) {
-        this(spritePath, x, y,
-                Images.get(spritePath).getWidth(null) * PIXEL_SCALE,
-                Images.get(spritePath).getHeight(null) * PIXEL_SCALE);
+    protected BaseObject(Image sprite, int x, int y) {
+        this(sprite, x, y,
+                sprite.getWidth(null) * PIXEL_SCALE,
+                sprite.getHeight(null) * PIXEL_SCALE);
     }
 
     /**
      * Ein neues Objekt erstellen.
-     * @param spritePath Pfad zu einer Bilddatei
+     * @param sprite Bild
      * @param x X-Position
      * @param y Y-Position
      * @param width Breite
      * @param height Höhe
      */
-    protected BaseObject(String spritePath, int x, int y, int width, int height) {
-        this.spritePath = spritePath;
-        sprite = Images.get(spritePath);
+    protected BaseObject(Image sprite, int x, int y, int width, int height) {
+        this.sprite = sprite;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -88,6 +84,10 @@ public abstract class BaseObject {
      * @param g Grafik-Objekt. Von der Szene bereitgestellt.
      */
     public void draw(Graphics2D g) {
+        // Überspringen, wenn kein Sprite gesetzt ist
+        if(sprite == null)
+            return;
+
         g.drawImage(
                 sprite,
                 x, y,
@@ -108,7 +108,6 @@ public abstract class BaseObject {
                 ", y=" + y +
                 ", width=" + width +
                 ", height=" + height +
-                ", sprite=" + spritePath +
                 '}';
     }
 }

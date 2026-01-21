@@ -1,8 +1,6 @@
 package czg.scenes;
 
-import czg.MainWindow;
 import czg.objects.BaseObject;
-import czg.util.Images;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -13,20 +11,6 @@ import java.util.List;
  * sich darauf bewegenden Objekten.
  */
 public class BaseScene {
-
-    /**
-     * Ob ein einfarbiger Hintergrund gewünscht ist. Andernfalls
-     * wird das {@link #backgroundImage} verwendet.
-     */
-    private boolean useBackgroundColor = true;
-    /**
-     * Hintergrundfarbe, falls {@link #useBackgroundColor} {@code true} ist.
-     */
-    private Color backgroundColor = Color.BLACK;
-    /**
-     * Hintergrundbild, falls {@link #useBackgroundColor} {@code false} ist.
-     */
-    private Image backgroundImage = null;
 
     /**
      * Liste der Objekte in diese Szene
@@ -50,26 +34,6 @@ public class BaseScene {
      */
     public boolean coverPausesAudio = false;
 
-
-    /**
-     * Eine einfarbige Farbe als Hintergrund verwenden
-     * @param c Die Hintergrundfarbe
-     */
-    public void setBackgroundColor(Color c) {
-        useBackgroundColor = true;
-        backgroundColor = c;
-    }
-
-    /**
-     * Ein Hintergrundbild anstelle einer einzelnen Farbe verwenden
-     * @param i Das Bild
-     * @see Images#get(String)
-     */
-    public void setBackgroundImage(Image i) {
-        useBackgroundColor = false;
-        backgroundImage = i;
-    }
-
     /**
      * Ruft {@link BaseObject#update()} für jedes Objekt in der {@link #objects}-Liste auf
      */
@@ -84,16 +48,6 @@ public class BaseScene {
      * @see SceneStack#paintComponent(Graphics)
      */
     public void draw(Graphics2D g) {
-        // Hintergrund zeichnen:
-        if(useBackgroundColor) {
-            // Einfarbig
-            g.setColor(backgroundColor);
-            g.fillRect(0,0,MainWindow.WIDTH,MainWindow.HEIGHT);
-        } else {
-            // Bild
-            g.drawImage(backgroundImage, 0, 0, MainWindow.WIDTH, MainWindow.HEIGHT, null);
-        }
-
         // Objekte zeichnen
         objects.forEach(o -> o.draw(g));
     }

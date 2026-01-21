@@ -1,6 +1,7 @@
 package czg.scenes;
 
 import czg.MainWindow;
+import czg.objects.BackdropObject;
 import czg.util.Draw;
 
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.awt.*;
 public class TitleScreenScene extends BaseScene {
 
     public TitleScreenScene() {
-        setBackgroundColor(new Color(52, 48, 48));
+        objects.add(new BackdropObject(new Color(52, 48, 48)));
     }
 
     @Override
