@@ -30,7 +30,7 @@ die Spielfigur zu dieser hinzugefügt werden und schließlich die Szene auf den
 Szenen-Stapel gelegt werden.
 
 
-## Szene ([czg.scenes.BaseScene](../../src/main/java/czg/scene/BaseScene.java))
+## Szene ([czg.scenes.BaseScene](../../src/main/java/czg/scenes/BaseScene.java))
 
 Eine Szene enthält eine Liste von Objekten. Wenn die Szene gezeichnet (`draw()`-Methode)
 oder ihre Logik durchlaufen (`update()`-Methode) wird, führt sie wiederum die `draw()`- bzw.
@@ -49,7 +49,7 @@ sollte dann in ihrem Konstruktor ihre Objekte erstellen und hinzufügen, und *ka
 bzw. `super.update()`) die vorgefertigten Methoden von `BaseScene` aufrufen.
 
 
-## Der Szenenstapel ([czg.scenes.SceneStack](../../src/main/java/czg/scene/SceneStack.java))
+## Der Szenenstapel ([czg.scenes.SceneStack](../../src/main/java/czg/scenes/SceneStack.java))
 
 Der Szenenstapel ist der einzige Inhalt des Fensters. Er speichert eine Liste
 von allen Szenen auf dem Bildschirm. Die erste Szene, die hinzugefügt wird,
