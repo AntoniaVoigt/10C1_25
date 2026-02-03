@@ -17,8 +17,18 @@ import static czg.MainWindow.*;
  */
 public abstract class BaseObject {
 
+    /**
+     * Position
+     */
     public int x, y;
+    /**
+     * Größe
+     */
     public int width, height;
+    /**
+     * Angezeigtes Bild. Kann {@code null} sein, wenn das Objekt
+     * unsichtbar sein soll.
+     */
     public Image sprite;
 
     /**

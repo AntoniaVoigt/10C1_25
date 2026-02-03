@@ -2,12 +2,10 @@ package czg.sound;
 
 import javax.sound.sampled.*;
 
+/**
+ * Abstrakte Grundklasse für Sounds
+ */
 public abstract class BaseSound {
-
-    /**
-     * Wiedergabezustand
-     */
-    protected boolean isPlaying = false;
 
     /**
      * Zugriff auf die verwendete {@link DataLine}, z.B. ein {@link Clip}
@@ -23,11 +21,10 @@ public abstract class BaseSound {
     public abstract void setPlaying(boolean playing);
 
     /**
+     * Abfragen, ob dieser Sound gerade abgespielt wird
      * @return Ob der Sound abspielt oder angehalten wurde
      */
-    public boolean isPlaying() {
-        return isPlaying;
-    }
+    public abstract boolean isPlaying();
 
     /**
      * Spult zu der angegebenen Position vor oder zurück

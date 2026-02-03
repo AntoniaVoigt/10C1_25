@@ -7,10 +7,13 @@ import javax.sound.sampled.LineUnavailableException;
 import java.io.IOException;
 
 /**
- * {@code BaseSound}-Implementierung mithilfe von {@link Clip}
+ * {@link BaseSound}-Implementierung mithilfe von {@link Clip}
  */
 public class ClipSound extends BaseSound {
 
+    /**
+     * Der als Backend verwendete {@code Clip}
+     */
     private final Clip clip;
 
     /**

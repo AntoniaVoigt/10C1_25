@@ -18,6 +18,9 @@ public class Input implements KeyListener, MouseListener {
      */
     public static final Input INSTANCE = new Input();
 
+    /**
+     * Soll nicht von außerhalb instanziiert werden
+     */
     private Input() {}
 
 
@@ -40,7 +43,8 @@ public class Input implements KeyListener, MouseListener {
 
 
         /**
-         * @return Ob die Taste gedrückt ist, egal wie lange schon
+         * Abfragen, ob eine Taste gedrückt ist, egal wie lange schon
+         * @return Siehe Beschreibung
          */
         public boolean isDown() {
             return this == PRESSED || this == HELD;

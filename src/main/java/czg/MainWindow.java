@@ -8,6 +8,9 @@ import czg.util.Input;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Das Haupt-Fenster. Hier wird die Grafik ausgegeben.
+ */
 public class MainWindow extends JFrame implements Runnable {
 
     /**
@@ -33,6 +36,9 @@ public class MainWindow extends JFrame implements Runnable {
     public static final MainWindow INSTANCE = new MainWindow();
 
 
+    /**
+     * Soll nicht von außerhalb instanziiert werden
+     */
     private MainWindow() {
         super("CZGame");
 
@@ -55,6 +61,12 @@ public class MainWindow extends JFrame implements Runnable {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+
+    /**
+     * Die tatsächliche Main-Methode. Zeigt das Fenster, startet
+     * die Haupt-Schleife und fügt die erste Szene hinzu.
+     * @param args Unbenutzt
+     */
     public static void main(String[] args) {
         // OpenGL-Grafikschnittstelle und damit (hoffentlich) die Grafikkarte verwenden
         System.setProperty("sun.java2d.opengl","true");
