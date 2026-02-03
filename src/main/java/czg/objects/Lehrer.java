@@ -1,4 +1,4 @@
-
+/*
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,4 +29,4 @@ public class Lehrer extends NPC {
         return // Ist noch nicht fertig
     }
 
-}
+}*/

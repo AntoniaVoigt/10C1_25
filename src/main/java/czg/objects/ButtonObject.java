@@ -45,7 +45,7 @@ public class ButtonObject extends BaseObject {
      * @param method auszuführende Methode
      */
     public ButtonObject(Image sprite, int x, int y, int width, int height, Runnable method) {
-        super(sprite, x, y);
+        super(sprite, x, y, width, height);
         this.method = method;
     }
 
