@@ -4,8 +4,8 @@
  */
 package czg.scenes.minigame_scenes;
 
+import czg.MainWindow;
 import czg.objects.BackdropObject;
-import czg.objects.BaseObject;
 import czg.objects.ButtonObject;
 import czg.scenes.*;
 import czg.util.Images;
@@ -18,12 +18,20 @@ import java.awt.*;
  */
 public class LevelSelectorScene extends BaseScene {
     public LevelSelectorScene(BaseScene level1, BaseScene level2, BaseScene level3) {
-        objects.add(new BackdropObject(new Color(150, 150, 150)));
+        objects.add(new BackdropObject(Images.get("/assets/minigames/general/level_selector_background.png")));
         
-        BaseObject buttonLevel1 = new ButtonObject(Images.get("/assets/minigames/informatics/button.png"), 100, 100, 200, 50, () -> SceneStack.INSTANCE.push(level1));
-        BaseObject buttonLevel2 = new ButtonObject(Images.get("/assets/minigames/informatics/button.png"), 100, 200, 200, 50, () -> SceneStack.INSTANCE.push(level2));
-        BaseObject buttonLevel3 = new ButtonObject(Images.get("/assets/minigames/informatics/button.png"), 100, 300, 200, 50, () -> SceneStack.INSTANCE.push(level3));
+        ButtonObject buttonLevel1 = new ButtonObject(Images.get("/assets/minigames/general/button_level_1.png"), () -> SceneStack.INSTANCE.push(level1));
+        ButtonObject buttonLevel2 = new ButtonObject(Images.get("/assets/minigames/general/button_level_2.png"), () -> SceneStack.INSTANCE.push(level2));
+        ButtonObject buttonLevel3 = new ButtonObject(Images.get("/assets/minigames/general/button_level_3.png"), () -> SceneStack.INSTANCE.push(level3));
 
+        buttonLevel1.x = MainWindow.INSTANCE.WIDTH/2 - buttonLevel1.width/2;
+        buttonLevel1.y = (int)(MainWindow.INSTANCE.HEIGHT * 0.35);
+        
+        buttonLevel2.x = MainWindow.INSTANCE.WIDTH/2 - buttonLevel2.width/2;
+        buttonLevel2.y = (int)(MainWindow.INSTANCE.HEIGHT * 0.55);
+        
+        buttonLevel3.x = MainWindow.INSTANCE.WIDTH/2 - buttonLevel3.width/2;
+        buttonLevel3.y = (int)(MainWindow.INSTANCE.HEIGHT * 0.75);
         objects.add(buttonLevel1);
         objects.add(buttonLevel2);
         objects.add(buttonLevel3);
