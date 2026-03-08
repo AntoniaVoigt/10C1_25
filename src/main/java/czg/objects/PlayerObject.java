@@ -4,8 +4,13 @@
  */
 package czg.objects;
 
+//Importieren nötiger Methoden
 import czg.scenes.BaseScene;
+import czg.sound.BaseSound;
+import czg.sound.ClipSound;
+import czg.sound.EndOfFileBehaviour;
 import czg.util.Images;
+import czg.util.Input;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -18,8 +23,9 @@ import java.util.List;
 public class PlayerObject extends BaseObject{
     //Festlegen der benötigten Variablen (Lebenspunkte, veränderliche Charaktereigentschaften)
     public String name;
+    //Anlegen einer Reihung "Inventar", in welchem die Items, auf die der Spieler zugreifen kann, gespeichert werden
     public List<ItemObject> inventar;
-    
+
     public static PlayerObject INSTANCE = new PlayerObject(Images.get("/assets/characters/PlayerBase.png"), 0, 0, "tmp", new ArrayList<>());
 
     public PlayerObject() {
@@ -31,12 +37,16 @@ public class PlayerObject extends BaseObject{
           super (sprite, x, y);
           this.name = name;
           this.inventar = inventar;
+          
+      
     }
-
+    //Sobald der Spieler angeklickt wird, wird das Inventar geöffnet
+    /*
     @Override
     public void update(BaseScene scene) {
-       // if(isClicked())
-            //SceneStack.INSTANCE.push(new InventarScene());
+        if(isClicked())
+            SceneStack.INSTANCE.push(new InventarScene());
     }
+     */
     
 }
