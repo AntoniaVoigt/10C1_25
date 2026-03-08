@@ -101,7 +101,8 @@ public class InformaticsLevelScene extends LevelScene {
                             ((ButtonObject) levelSelectorScene.objects.get(levelSelectorScene.objects.size() - 3)).method.run();
                     case 1 ->
                             ((ButtonObject) levelSelectorScene.objects.get(levelSelectorScene.objects.size() - 2)).method.run();
-                    case 2 -> ((ButtonObject) levelSelectorScene.objects.getLast()).method.run();
+                    case 2 ->
+                            ((ButtonObject) levelSelectorScene.objects.getLast()).method.run();
                 }
             }
         }

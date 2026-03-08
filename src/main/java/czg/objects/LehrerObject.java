@@ -33,14 +33,14 @@ public class LehrerObject extends BaseObject{
         }
         else {
             item_lehrer = lehrer_items[move - 1];
-            schaden = level - Integer.parseInt(Itemobject.testitemliste[item_lehrer][1]);
-            if (schaden <= 0) {
-                schaden = 0;
-            }
-
+//            schaden = level - Integer.parseInt(Itemobject.testitemliste[item_lehrer][1]);
+//            if (schaden <= 0) {
+//                schaden = 0;
+//            }
+//
         }
-
-        hp -= schaden;
+//
+//        hp -= schaden;
 
     }
 
