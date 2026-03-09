@@ -29,9 +29,9 @@ public class PlayerObject extends BaseObject{
     // Standardfarben
     public static final SaveFile defaultColors = new SaveFile(
             new Color(57, 37, 35),  // Haare: Braun
-            new Color(45, 96, 145), // Haut: Blau
-            new Color(97, 105, 112),// Hoodie: Grau
-            new Color(241, 241, 44) // Hose: Gelb
+            new Color(241, 241, 44),// Haut: Gelb
+            new Color(45, 96, 145), // Hoodie: Blau
+            new Color(97, 105, 112) // Hose: Grau
     );
 
     /**
